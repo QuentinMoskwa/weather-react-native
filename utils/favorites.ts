@@ -14,7 +14,7 @@ export async function getFavorites(): Promise<FavoriteCity[]> {
     const favoritesJson = await AsyncStorage.getItem(FAVORITES_KEY);
     return favoritesJson ? JSON.parse(favoritesJson) : [];
   } catch (error) {
-    console.error("Error loading favorites:", error);
+    console.error("Erreur de chargement des favoris:", error);
     return [];
   }
 }
@@ -31,7 +31,7 @@ export async function addFavorite(city: FavoriteCity): Promise<void> {
       await AsyncStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
     }
   } catch (error) {
-    console.error("Error adding favorite:", error);
+    console.error("Erreur lors de l'ajout aux favoris:", error);
   }
 }
 
@@ -41,7 +41,7 @@ export async function removeFavorite(cityName: string): Promise<void> {
     const filtered = favorites.filter((fav) => fav.name !== cityName);
     await AsyncStorage.setItem(FAVORITES_KEY, JSON.stringify(filtered));
   } catch (error) {
-    console.error("Error removing favorite:", error);
+    console.error("Error de suppression de favoris:", error);
   }
 }
 
@@ -50,7 +50,7 @@ export async function isFavorite(cityName: string): Promise<boolean> {
     const favorites = await getFavorites();
     return favorites.some((fav) => fav.name === cityName);
   } catch (error) {
-    console.error("Error checking favorite:", error);
+    console.error("Erreur de check:", error);
     return false;
   }
 }

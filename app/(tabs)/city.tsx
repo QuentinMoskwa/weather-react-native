@@ -85,7 +85,7 @@ export default function CityScreen() {
         setFavorite(isFav);
       }
     } catch (error) {
-      console.error('Error fetching city data:', error);
+      console.error('Erreur recherche de la ville:', error);
     } finally {
       setLoading(false);
     }
@@ -142,16 +142,19 @@ export default function CityScreen() {
                 <ThemedText style={styles.starIcon}>{favorite ? '★' : '☆'}</ThemedText>
               </Pressable>
             </View>
-            <SearchBar
-              searchCity={searchCity}
-              onSearchChange={setSearchCity}
-              onSearch={handleSearch}
-              suggestions={suggestions}
-              isSearching={isSearching}
-              showDropdown={showDropdown}
-              onDropdownToggle={setShowDropdown}
-              onSelectCity={handleSelectCity}
-            />
+            <View style={styles.searchWrapper}>
+              <SearchBar
+                searchCity={searchCity}
+                onSearchChange={setSearchCity}
+                onSearch={handleSearch}
+                suggestions={suggestions}
+                isSearching={isSearching}
+                showDropdown={showDropdown}
+                onDropdownToggle={setShowDropdown}
+                onSelectCity={handleSelectCity}
+              />
+            </View>
+
           </View>
 
           {weatherData && weatherData.hourly && (
@@ -220,21 +223,27 @@ const styles = StyleSheet.create({
     // gap: 24,
   },
   topBar: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
-    alignItems: 'center',
-    marginBottom: '30%',
-  },
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+  gap: 15,
+  marginBottom: 80,
+},
+
+searchWrapper: {
+  flex: 1,
+  maxWidth: 250,
+},
+
   titreVille:{
-    fontSize:20
+    fontSize:25
   },
   titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
+  flexDirection: 'row',
+  alignItems: 'center',
+},
+
   starButton: {
     padding: 4,
   },

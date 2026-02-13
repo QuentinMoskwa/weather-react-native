@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     gap: 8,
     position: 'relative',
     zIndex: 1000,
-    width: 250,
+    width: '100%',
   },
   inputContainer: {
     position: 'relative',
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     padding: 12,
     paddingRight: 40,
     fontSize: 16,
-    width: 150,
+    flex: 1,
   },
   closeButton: {
     position: 'absolute',
